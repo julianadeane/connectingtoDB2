@@ -1,0 +1,26 @@
+library(RODBC)
+dsns <- odbcDataSources("all")
+names(dsns)
+print(dsns["DB2"])
+dsn_driver <- "IBM DB2 ODBC DRIVER"
+dsn_database <- "bludb"
+dsn_hostname <- "fbd88901-ebdb-4a4f-a32e-9822b9fb237b.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud"
+dsn_port <- "32731"
+dsn_protocol <- "TCPIP"
+dsn_uid <- "tjc64369"
+dsn_pwd <- "2k1qd4gipETuaMVJ"
+dsn_security <- "ssl"
+
+conn_path <- paste(
+    "DRIVER=", dsn_driver,
+    ";DATABASE=", dsn_database,
+    ";HOSTNAME=", dsn_hostname,
+    ";PORT=", dsn_port,
+    ";PROTOCOL=", dsn_protocol, 
+    ";UID=", dsn_uid,
+    ";PWD=", dsn_pwd,
+    ";SECURITY=", dsn_security,
+    sep= " ")
+    
+  conn <- odbcDriverConnect(conn_path, believeNRows = FALSE)
+conn
